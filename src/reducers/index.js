@@ -1,9 +1,9 @@
-import { FETCH_PRICE, TOGGLE_ACTIVE } from '../actions';
+import { FETCH_PRICE, TOGGLE_ACTIVE_CRYPTO, TOGGLE_ACTIVE } from '../actions';
 
 
 const initialState = {
-  activeCurrency: "USD",
-  activeCrypto: "BTC",
+  activeCurrency: "GBP",
+  activeCryptocurrency: "BTC",
   prices: {}
 }
 
@@ -13,11 +13,13 @@ export const cryptoChecker = (state = initialState, action) => {
     case FETCH_PRICE:
     return Object.assign({}, state, {
       prices: action.payload,
-      activeCurrency: state.activeCurrency
+    })
+    case TOGGLE_ACTIVE_CRYPTO:
+    return Object.assign({}, state, {
+      activeCryptocurrency: action.payload
     })
     case TOGGLE_ACTIVE:
     return Object.assign({}, state, {
-      prices: state.prices,
       activeCurrency: action.payload
     })
     default:
