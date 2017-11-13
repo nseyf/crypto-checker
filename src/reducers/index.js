@@ -1,8 +1,8 @@
-import { FETCH_PRICE, TOGGLE_ACTIVE_CRYPTO, TOGGLE_ACTIVE } from '../actions';
+import { FETCH_PRICE, TOGGLE_ACTIVE_CRYPTO, TOGGLE_ACTIVE } from '../actions/actions';
 
 
 const initialState = {
-  activeCurrency: "GBP",
+  activeCurrency: "USD",
   activeCryptocurrency: "BTC",
   prices: {}
 }

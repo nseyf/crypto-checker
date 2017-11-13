@@ -4,7 +4,7 @@ import Graph from '../components/graph';
 import ShowPrice from '../components/showprice';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchPrice, toggleActiveCrypto, toggleActive } from '../actions';
+import { fetchPrice, toggleActiveCrypto, toggleActive } from '../actions/actions';
 
 
 class SelectCrypto extends Component {
@@ -25,6 +25,7 @@ componentWillUpdate(nextProps){
 
 
   render(){
+    console.log(this.props)
   const  { toggleActiveCrypto, toggleActive } = this.props;
 
   const buttonStyle = {
