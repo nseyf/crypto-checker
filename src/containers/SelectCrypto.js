@@ -30,15 +30,15 @@ componentWillUpdate(nextProps){
   const  { toggleActiveCrypto, toggleActive } = this.props;
 
   const buttonStyle = {
-    padding: "20px",
+    padding: "15px",
     fontWeight: "100",
     fontSize: "20px",
     margin: "5px",
+
     border: "none",
     borderRadius: "5px",
     outline: "0",
     borderBottom: "2px solid black",
-    background: "#f5f5f5"
   }
 
 if(!this.props.prices.ticker){
@@ -48,15 +48,17 @@ if(!this.props.prices.ticker){
 return (
       <div className="container" style={{
           background: "white",
+          borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
+          boxShadow: "0 1px 5px rgba(0, 0, 0, 0.15)"
         }}>
         <h1 className="text-center" style={{fontWeight: "100"}}>CRYPTO CHECKER</h1>
         <div className="row" style={{marginTop: "30px"}}>
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center" id="crypto-buttons">
+      <div className="col-xs-12" id="crypto-buttons">
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("BTC")}>BTC</button>
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("ETH")}>ETH</button>
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("LTC")}>LTC</button>
       </div>
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center" id="curr-buttons">
+      <div className="col-xs-12" id="curr-buttons">
         <button style={buttonStyle} onClick={() => toggleActive("USD")}>USD</button>
         <button style={buttonStyle} onClick={() => toggleActive("GBP")}>GBP</button>
         <button style={buttonStyle} onClick={() => toggleActive("EUR")}>EUR</button>

@@ -1,19 +1,15 @@
-// Action types
 import axios from 'axios';
 
 const COINDESK_API = 'https://api.cryptonator.com/api/full/';
 
-
 export const FETCH_PRICE = "FETCH_PRICE";
 
 export const fetchPrice = (currencies) => {
-  const url = `${COINDESK_API}${currencies}`
- /* const request = axios.get(url).then(response => response.data)
-return {
-  type: FETCH_PRICE,
-  payload: request
-} */
-return axios.get(url).then(response => response.data).then(function(data){
+  const url = `${COINDESK_API}${currencies}`;
+
+return axios.get(url)
+.then(response => response.data)
+.then(function(data){
   return {
     type: FETCH_PRICE,
     payload: data
