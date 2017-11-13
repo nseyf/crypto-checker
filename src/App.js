@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./index.css";
 import SelectCrypto from './containers/SelectCrypto';
 
 class App extends Component {

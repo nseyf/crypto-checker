@@ -3,11 +3,16 @@ import React from 'react';
 const ShowPrice = (data) => {
   return (
     <div className="row">
-    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12" style={{
-        border: "1px solid grey",
-        borderRadius: "5px"
+    <div className="col-xs-12" style={{
       }}>
-      <h2 style={{marginLeft: "20px", fontWeight: "900"}}>{data.ticker.base}/{data.ticker.target}<br />{data.ticker.price} </h2>
+      <h3 style={{
+        border: "3px solid #f5f5f5",
+        color: "grey",
+        padding: "10px",
+        fontWeight: "100"}}>{data.ticker.base}/{data.ticker.target}
+        <br />
+        <span style={{fontSize: "1.75em", color: "black"}}>{data.ticker.price}</span>
+        </h3>
     </div>
     </div>
   )

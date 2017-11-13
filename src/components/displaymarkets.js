@@ -5,17 +5,14 @@ const DisplayMarkets = (props) => {
    const { markets } = props;
 
    const listItemStyle = {
-     listStyleType: "none",
-     fontWeight: 900,
-     marginTop: "10px",
-     marginbottom: "50px"
+     borderBottom: "2px solid #f8f8f8",
    }
 
-function DisplayMarket(market, id){
+const DisplayMarket = (market, id) => {
   return (
-    <li className="text-center col-lg-3 col-sm-3 col-md-3 col-xs-6" style={listItemStyle} key={id}>
-    <p>{market.market.toUpperCase()}</p>
-    <p>{market.price}</p>
+    <li className=" col-lg-4 col-sm-4 col-md-4 col-xs-4" style={listItemStyle} key={id}>
+    <p style={{color: "grey"}}>{market.market.toUpperCase()}</p>
+    <p style={{fontSize: "1em"}}>{market.price}</p>
     </li>
   )
 }
@@ -24,7 +21,10 @@ function DisplayMarket(market, id){
 
   return (
     <div className="row text-center">
-    <ul>{markets.map(DisplayMarket)}</ul>
+    <ul style={{
+      listStyleType: "none",
+      paddingLeft: "0"
+    }}  className="unstyled">{markets.map(DisplayMarket)}</ul>
     </div>
   )
 };
