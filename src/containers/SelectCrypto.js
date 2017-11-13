@@ -6,12 +6,18 @@ import Graph from '../components/graph';
 
 class SelectCrypto extends Component {
 
+componentDidMount(){
+  this.props.fetchPrice(`${this.props.activeCryptocurrency}-${this.props.activeCurrency}`)
+}
+
+
+
   render(){
   const  { toggleActiveCrypto, toggleActive } = this.props;
   console.log(this.props)
 
   const buttonStyle = {
-    padding: "10px",
+    padding: "20px",
     fontWeight: "900",
     fontSize: "20px",
     margin: "5px",
@@ -20,6 +26,7 @@ class SelectCrypto extends Component {
     borderBottom: "2px solid black",
     background: "#f5f5f5"
   }
+
 
 return (
       <div className="container" style={{
@@ -54,7 +61,7 @@ return (
 
 const mapStateToProps = (state) => {
   return {
-    prices: fetchPrice(`${state.activeCryptocurrency}-${state.activeCurrency}`).payload,
+    prices: state.prices,
     activeCurrency: state.activeCurrency,
     activeCryptocurrency: state.activeCryptocurrency
   }
