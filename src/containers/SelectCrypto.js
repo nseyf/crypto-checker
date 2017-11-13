@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loader from '../components/loader';
 import Graph from '../components/graph';
 import ShowPrice from '../components/showprice';
+import DisplayMarkets from '../components/displaymarkets';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPrice, toggleActiveCrypto, toggleActive } from '../actions/actions';
@@ -45,7 +46,10 @@ if(!this.props.prices.ticker){
 
 return (
       <div className="container" style={{
-          height: "100vh",
+          background: "white",
+          borderBottomRightRadius: "15px",
+          borderBottomLeftRadius: "15px",
+
         }}>
         <h1 className="text-center" style={{fontWeight: "900"}}>CRYPTO CHECKER</h1>
         <div className="row" style={{marginTop: "30px"}}>
@@ -61,7 +65,8 @@ return (
       </div>
       </div>
         <Graph />
-        <ShowPrice ticker={this.props.prices.ticker}  />
+              <ShowPrice ticker={this.props.prices.ticker}  />
+        <DisplayMarkets markets={this.props.prices.ticker.markets} />
       </div>
     )
   }
