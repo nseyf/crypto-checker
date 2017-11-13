@@ -8,13 +8,12 @@ class SelectCrypto extends Component {
 
   render(){
   const  { toggleActiveCrypto, toggleActive } = this.props;
-  console.log(this.props.prices)
+  console.log(this.props)
 
   const buttonStyle = {
-    height: "100px",
-    width: "100px",
+    padding: "10px",
     fontWeight: "900",
-    fontSize: "30px",
+    fontSize: "20px",
     margin: "5px",
     border: "none",
     borderRadius: "5px",
@@ -27,25 +26,26 @@ return (
           height: "100vh",
         }}>
         <h1 className="text-center" style={{fontWeight: "900"}}>CRYPTO CHECKER</h1>
-
-      <div id="crypto-buttons">
+        <div className="row" style={{marginTop: "30px"}}>
+      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center" id="crypto-buttons">
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("BTC")}>BTC</button>
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("ETH")}>ETH</button>
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("LTC")}>LTC</button>
       </div>
-      <div id="curr-buttons">
+      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center" id="curr-buttons">
         <button style={buttonStyle} onClick={() => toggleActive("USD")}>USD</button>
         <button style={buttonStyle} onClick={() => toggleActive("GBP")}>GBP</button>
         <button style={buttonStyle} onClick={() => toggleActive("EUR")}>EUR</button>
       </div>
+      </div>
         <Graph />
-      <div style={{
-          padding: "20px",
-          margin: "10px",
+      <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12" style={{
           background: "#f5f5f5",
-          width: "50%"
+          paddingBottom: "10px",
+          border: "1px solid grey",
+          borderRadius: "5px"
         }}>
-        <h2>{this.props.activeCryptocurrency}: </h2>
+        <h2 style={{fontWeight: "900"}}>{this.props.activeCryptocurrency}: </h2>
       </div>
       </div>
     )

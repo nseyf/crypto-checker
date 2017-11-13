@@ -3,7 +3,7 @@ import React from 'react';
 const Graph = (props) => {
   return (
     <div>
-      Testing
+      <p>Graph goes here.</p>
     </div>
   )
 }
