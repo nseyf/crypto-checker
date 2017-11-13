@@ -1,20 +1,31 @@
 import React, { Component } from 'react';
+import Loader from '../components/loader';
+import Graph from '../components/graph';
+import ShowPrice from '../components/showprice';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchPrice, toggleActiveCrypto, toggleActive } from '../actions';
-import Graph from '../components/graph';
+
 
 class SelectCrypto extends Component {
 
-componentDidMount(){
+componentWillMount(){
   this.props.fetchPrice(`${this.props.activeCryptocurrency}-${this.props.activeCurrency}`)
 }
 
+componentWillUpdate(nextProps){
+  if(
+    this.props.activeCryptocurrency !== nextProps.activeCryptocurrency ||
+    this.props.activeCurrency !== nextProps.activeCurrency
+  ) {
+  this.props.fetchPrice(`${nextProps.activeCryptocurrency}-${nextProps.activeCurrency}`)
+}
+
+}
 
 
   render(){
   const  { toggleActiveCrypto, toggleActive } = this.props;
-  console.log(this.props)
 
   const buttonStyle = {
     padding: "20px",
@@ -27,6 +38,9 @@ componentDidMount(){
     background: "#f5f5f5"
   }
 
+if(!this.props.prices.ticker){
+  return <Loader />
+} else {
 
 return (
       <div className="container" style={{
@@ -46,16 +60,10 @@ return (
       </div>
       </div>
         <Graph />
-      <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12" style={{
-          background: "#f5f5f5",
-          paddingBottom: "10px",
-          border: "1px solid grey",
-          borderRadius: "5px"
-        }}>
-        <h2 style={{fontWeight: "900"}}>{this.props.activeCryptocurrency}: </h2>
-      </div>
+        <ShowPrice ticker={this.props.prices.ticker}  />
       </div>
     )
+  }
   }
 }
 
