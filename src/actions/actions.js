@@ -1,7 +1,7 @@
 // Action types
 import axios from 'axios';
 
-const COINDESK_API = 'https://api.cryptonator.com/api/ticker/';
+const COINDESK_API = 'https://api.cryptonator.com/api/full/';
 
 
 export const FETCH_PRICE = "FETCH_PRICE";

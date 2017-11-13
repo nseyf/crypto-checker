@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function() {
+const Loader = () => {
   return (
     <div style={{
       left: "0",
@@ -16,3 +16,5 @@ export default function() {
     </div>
   )
 }
+
+export default Loader
