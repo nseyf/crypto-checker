@@ -18,8 +18,7 @@ const symbol = (currency) => {
 
   return (
     <div className="row">
-    <div className="col-xs-12" style={{
-      }}>
+    <div>
       <h3 style={{
         borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
         boxShadow: "0 1px 5px rgba(0, 0, 0, 0.15)",
