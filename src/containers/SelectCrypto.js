@@ -38,7 +38,7 @@ componentWillUpdate(nextProps){
     border: "none",
     borderRadius: "5px",
     outline: "0",
-    borderBottom: "2px solid black",
+
   }
 
 if(!this.props.prices.ticker){
