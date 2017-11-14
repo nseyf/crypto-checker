@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ShowPrice = (data) => {
-const { currency } = data;
+const { currency, cryptocurrency, convertedPrice } = data;
 
 const symbol = (currency) => {
   switch(currency) {
@@ -16,7 +16,6 @@ const symbol = (currency) => {
   }
 }
 
-
   return (
     <div className="row">
     <div className="col-xs-12" style={{
@@ -29,8 +28,8 @@ const symbol = (currency) => {
         transition: "1s",
         marginBottom: "20px",
         fontWeight: "100"}}>
-        <span style={{fontSize: "1.5em", paddingRight: "3px", color: "black"}}>{data.cryptocurrency}:
-        <span style={{fontSize: "1.75em", paddingLeft: "5px"}}>{symbol(currency)}{data.convertedPrice[Object.keys(data.convertedPrice)]}</span>
+        <span style={{fontSize: "1.5em", paddingRight: "3px", color: "black"}}>{cryptocurrency}:
+        <span style={{fontSize: "1.75em", paddingLeft: "5px"}}>{symbol(currency)}{convertedPrice[currency]}</span>
         </span>
         </h3>
     </div>
