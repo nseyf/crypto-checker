@@ -1,6 +1,22 @@
 import React from 'react';
 
 const ShowPrice = (data) => {
+const { currency } = data;
+
+const symbol = (currency) => {
+  switch(currency) {
+    case "USD":
+    return "$";
+    case "EUR":
+    return "€";
+    case "GBP":
+    return "£"
+    default:
+    return
+  }
+}
+
+
   return (
     <div className="row">
     <div className="col-xs-12" style={{
@@ -10,10 +26,12 @@ const ShowPrice = (data) => {
         boxShadow: "0 1px 5px rgba(0, 0, 0, 0.15)",
         color: "grey",
         padding: "20px",
+        transition: "1s",
         marginBottom: "20px",
-        fontWeight: "100"}}>{data.ticker.base}/{data.ticker.target}
-        <br />
-        <span style={{fontSize: "1.75em", color: "black"}}>{data.ticker.price}</span>
+        fontWeight: "100"}}>
+        <span style={{fontSize: "1.5em", paddingRight: "3px", color: "black"}}>{data.cryptocurrency}:
+        <span style={{fontSize: "1.75em", paddingLeft: "5px"}}>{symbol(currency)}{data.convertedPrice[Object.keys(data.convertedPrice)]}</span>
+        </span>
         </h3>
     </div>
     </div>

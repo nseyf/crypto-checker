@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Update to new API
 
 const DisplayMarkets = (props) => {
    const { markets } = props;

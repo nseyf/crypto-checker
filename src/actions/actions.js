@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-const COINDESK_API = 'https://api.cryptonator.com/api/full/';
-
 export const FETCH_PRICE = "FETCH_PRICE";
 
-export const fetchPrice = (currencies) => {
-  const url = `${COINDESK_API}${currencies}`;
+export const fetchPrice = (cryptocurrency, currency) => {
+const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${cryptocurrency}&tsym=${currency}&limit=60&aggregate=3&e=CCCAGG`
 
 return axios.get(url)
 .then(response => response.data)
@@ -16,6 +14,23 @@ return axios.get(url)
   }
 })
 }
+
+export const CONVERT_PRICE = "CONVERT_PRICE";
+
+export const convertPrice = (cryptocurrency, currency) => {
+const convertorUrl = `https://min-api.cryptocompare.com/data/price?fsym=${cryptocurrency}&tsyms=${currency}`
+
+  return axios.get(convertorUrl)
+  .then(response => response.data)
+  .then(function(data){
+    return {
+      type: CONVERT_PRICE,
+      payload: data
+    }
+  })
+}
+
+
 
 export const TOGGLE_ACTIVE_CRYPTO = "TOGGLE_ACTIVE_CRYPTO";
 

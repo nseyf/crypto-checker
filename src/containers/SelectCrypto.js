@@ -5,13 +5,15 @@ import ShowPrice from '../components/showprice';
 import DisplayMarkets from '../components/displaymarkets';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchPrice, toggleActiveCrypto, toggleActive } from '../actions/actions';
+import { fetchPrice, convertPrice, toggleActiveCrypto, toggleActive } from '../actions/actions';
 
 
 class SelectCrypto extends Component {
 
 componentDidMount(){
-  this.props.fetchPrice(`${this.props.activeCryptocurrency}-${this.props.activeCurrency}`)
+  const { activeCurrency, activeCryptocurrency } = this.props
+  this.props.fetchPrice(activeCryptocurrency, activeCurrency)
+  this.props.convertPrice(activeCryptocurrency, activeCurrency)
 }
 
 componentWillUpdate(nextProps){
@@ -19,14 +21,14 @@ componentWillUpdate(nextProps){
     this.props.activeCryptocurrency !== nextProps.activeCryptocurrency ||
     this.props.activeCurrency !== nextProps.activeCurrency
   ) {
-  this.props.fetchPrice(`${nextProps.activeCryptocurrency}-${nextProps.activeCurrency}`)
+  this.props.fetchPrice(nextProps.activeCryptocurrency, nextProps.activeCurrency)
+  this.props.convertPrice(nextProps.activeCryptocurrency, nextProps.activeCurrency)
 }
 
 }
 
 
   render(){
-    console.log(this.props)
   const  { toggleActiveCrypto, toggleActive } = this.props;
 
   const buttonStyle = {
@@ -34,14 +36,13 @@ componentWillUpdate(nextProps){
     fontWeight: "100",
     fontSize: "20px",
     margin: "5px",
-
     border: "none",
     borderRadius: "5px",
     outline: "0",
 
   }
 
-if(!this.props.prices.ticker){
+if(!this.props.prices){
   return <Loader />
 } else {
 
@@ -64,9 +65,8 @@ return (
         <button style={buttonStyle} onClick={() => toggleActive("EUR")}>EUR</button>
       </div>
       </div>
-        <Graph />
-        <ShowPrice ticker={this.props.prices.ticker}  />
-        <DisplayMarkets markets={this.props.prices.ticker.markets} />
+        <Graph prices={this.props.prices}/>
+        <ShowPrice convertedPrice={this.props.convertedPrice} cryptocurrency={this.props.activeCryptocurrency} currency={this.props.activeCurrency}/>
       </div>
     )
   }
@@ -76,13 +76,14 @@ return (
 const mapStateToProps = (state) => {
   return {
     prices: state.prices,
+    convertedPrice: state.convertedPrice,
     activeCurrency: state.activeCurrency,
     activeCryptocurrency: state.activeCryptocurrency
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchPrice, toggleActiveCrypto, toggleActive }, dispatch)
+  return bindActionCreators({ fetchPrice, convertPrice, toggleActiveCrypto, toggleActive }, dispatch)
 }
 
 export default connect(
