@@ -6,8 +6,8 @@ import axios from 'axios';
 
 export const FETCH_PRICE = "FETCH_PRICE";
 
-export const fetchPrice = (cryptocurrency, currency) => {
-const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${cryptocurrency}&tsym=${currency}&limit=60&aggregate=3&e=CCCAGG`
+export const fetchPrice = (cryptocurrency, currency, timeFormat) => {
+const url = `https://min-api.cryptocompare.com/data/histo${timeFormat}?fsym=${cryptocurrency}&tsym=${currency}&limit=60&aggregate=3&e=CCCAGG`
 
 return axios.get(url)
 .then(response => response.data)
@@ -49,5 +49,14 @@ export const toggleActive = (activeCurrency) => {
   return {
     type: TOGGLE_ACTIVE,
     payload: activeCurrency
+  }
+}
+
+export const TOGGLE_TIME_FORMAT = "TOGGLE_TIME_FORMAT";
+
+export const toggleTimeFormat = (timeFormat) => {
+  return {
+    type: TOGGLE_TIME_FORMAT,
+    payload: timeFormat
   }
 }
