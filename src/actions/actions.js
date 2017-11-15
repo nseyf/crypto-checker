@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+
+
+
+
 export const FETCH_PRICE = "FETCH_PRICE";
 
 export const fetchPrice = (cryptocurrency, currency) => {
@@ -29,8 +33,6 @@ const convertorUrl = `https://min-api.cryptocompare.com/data/price?fsym=${crypto
     }
   })
 }
-
-
 
 export const TOGGLE_ACTIVE_CRYPTO = "TOGGLE_ACTIVE_CRYPTO";
 
