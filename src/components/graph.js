@@ -4,9 +4,6 @@ import * as d3 from 'd3';
 const Graph = (props) => {
   const { Data } = props.prices;
 
-// Put d3 logic here
-
-
 const renderGraph = (graphData) => {
     if (graphData) {
 
@@ -16,13 +13,13 @@ const renderGraph = (graphData) => {
         return time
 }
 
-console.log(graphData.map((entry) => {
+const convertedTimes = graphData.map((entry) => {
   const convertedEntry = {
     ...entry,
     time: convertTime(entry.time)
   }
   return convertedEntry
-}))
+});
 
 
     return (

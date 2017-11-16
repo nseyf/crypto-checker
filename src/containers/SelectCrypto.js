@@ -5,7 +5,7 @@ import ShowPrice from '../components/showprice';
 import DisplayMarkets from '../components/displaymarkets';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchPrice, convertPrice, toggleActiveCrypto, toggleActive, toggleTimeFormat } from '../actions/actions';
+import { fetchPrice, fetchMarkets, convertPrice, toggleActiveCrypto, toggleActive, toggleTimeFormat } from '../actions/actions';
 
 
 class SelectCrypto extends Component {
@@ -14,6 +14,7 @@ componentDidMount(){
   const { activeCurrency, activeCryptocurrency, timeFormat } = this.props
   this.props.fetchPrice(activeCryptocurrency, activeCurrency, timeFormat)
   this.props.convertPrice(activeCryptocurrency, activeCurrency)
+  this.props.fetchMarkets(activeCryptocurrency, activeCurrency)
 }
 
 componentWillUpdate(nextProps){
@@ -24,6 +25,7 @@ componentWillUpdate(nextProps){
   ) {
   this.props.fetchPrice(nextProps.activeCryptocurrency, nextProps.activeCurrency, nextProps.timeFormat)
   this.props.convertPrice(nextProps.activeCryptocurrency, nextProps.activeCurrency)
+  this.props.fetchMarkets(nextProps.activeCryptocurrency, nextProps.activeCurrency)
 
 }
 
@@ -32,6 +34,7 @@ componentWillUpdate(nextProps){
 
   render(){
   const  { toggleActiveCrypto, toggleActive, toggleTimeFormat } = this.props;
+
   const buttonStyle = {
     padding: "15px",
     fontWeight: "100",
@@ -68,8 +71,9 @@ return (
       <button style={buttonStyle} onClick={() => toggleTimeFormat("minute")}>MINUTE</button>
       <button style={buttonStyle} onClick={() => toggleTimeFormat("hour")}>HOUR</button>
       </div>
+      <ShowPrice convertedPrice={this.props.convertedPrice} cryptocurrency={this.props.activeCryptocurrency} currency={this.props.activeCurrency}/>
+      <DisplayMarkets markets={this.props.markets.ticker} />
         <Graph prices={this.props.prices}/>
-        <ShowPrice convertedPrice={this.props.convertedPrice} cryptocurrency={this.props.activeCryptocurrency} currency={this.props.activeCurrency}/>
       </div>
     )
   }
@@ -79,6 +83,7 @@ return (
 const mapStateToProps = (state) => {
   return {
     prices: state.prices,
+    markets: state.markets,
     convertedPrice: state.convertedPrice,
     activeCurrency: state.activeCurrency,
     activeCryptocurrency: state.activeCryptocurrency,
@@ -87,7 +92,7 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchPrice, convertPrice, toggleActiveCrypto, toggleActive, toggleTimeFormat }, dispatch)
+  return bindActionCreators({ fetchPrice, fetchMarkets, convertPrice, toggleActiveCrypto, toggleActive, toggleTimeFormat }, dispatch)
 }
 
 export default connect(

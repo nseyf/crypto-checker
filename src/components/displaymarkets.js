@@ -1,33 +1,34 @@
 import React from 'react';
 
-// Update to new API
-
 const DisplayMarkets = (props) => {
-   const { markets } = props;
+if(props.markets) {
 
-   const listItemStyle = {
-     borderBottom: "2px solid #f8f8f8",
-   }
+const { markets } = props.markets;
 
-const DisplayMarket = (market, id) => {
+const renderMarket = (marketData) => {
+  const { market, price, volume } = marketData;
+  const marketItemStyle = {
+    borderBottom: "1px solid #f8f8f8",
+    marginTop: "20px",
+    marginBottom: "20px",
+    fontWeight: "900"
+  }
   return (
-    <li className=" col-lg-4 col-sm-4 col-md-4 col-xs-4" style={listItemStyle} key={id}>
-    <p style={{color: "grey"}}>{market.market.toUpperCase()}</p>
-    <p style={{fontSize: "1em"}}>{market.price}</p>
-    </li>
-  )
-}
-
-
-
-  return (
-    <div className="row text-center">
-    <ul style={{
-      listStyleType: "none",
-      paddingLeft: "0"
-    }}  className="unstyled">{markets.map(DisplayMarket)}</ul>
+    <div className="col-lg-2 col-md-3 col-sm-4 col-xs-6 text-center" style={marketItemStyle}>
+    <p>{market.toUpperCase()}</p>
+    <p>{price}</p>
+    <p>VOL: {volume}</p>
     </div>
   )
-};
+}
+  return (
+    <div className="row">{markets.map(renderMarket)}</div>
+  )
+} else if(!props.markets || props.markets.length === 0) {
+  return (
+    <div>No data</div>
+  )
+}
+}
 
 export default DisplayMarkets;

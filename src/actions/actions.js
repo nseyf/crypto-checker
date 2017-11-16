@@ -17,7 +17,22 @@ return axios.get(url)
     payload: data
   }
 })
-}
+};
+
+export const FETCH_MARKETS = "FETCH_MARKETS";
+
+export const fetchMarkets = (cryptocurrency, currency) => {
+  const url = `https://api.cryptonator.com/api/full/${cryptocurrency}-${currency}`;
+
+  return axios.get(url)
+  .then(response => response.data)
+  .then(function(data){
+    return {
+      type: FETCH_MARKETS,
+      payload: data
+    }
+  })
+};
 
 export const CONVERT_PRICE = "CONVERT_PRICE";
 
@@ -32,7 +47,7 @@ const convertorUrl = `https://min-api.cryptocompare.com/data/price?fsym=${crypto
       payload: data
     }
   })
-}
+};
 
 export const TOGGLE_ACTIVE_CRYPTO = "TOGGLE_ACTIVE_CRYPTO";
 
@@ -41,7 +56,7 @@ export const toggleActiveCrypto = (activeCryptocurrency) => {
     type: TOGGLE_ACTIVE_CRYPTO,
     payload: activeCryptocurrency
   }
-}
+};
 
 export const TOGGLE_ACTIVE = "TOGGLE_ACTIVE";
 
@@ -50,7 +65,7 @@ export const toggleActive = (activeCurrency) => {
     type: TOGGLE_ACTIVE,
     payload: activeCurrency
   }
-}
+};
 
 export const TOGGLE_TIME_FORMAT = "TOGGLE_TIME_FORMAT";
 
@@ -59,4 +74,4 @@ export const toggleTimeFormat = (timeFormat) => {
     type: TOGGLE_TIME_FORMAT,
     payload: timeFormat
   }
-}
+};
