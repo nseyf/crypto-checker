@@ -1,6 +1,8 @@
 import { FETCH_PRICE, FETCH_MARKETS, CONVERT_PRICE, TOGGLE_ACTIVE_CRYPTO, TOGGLE_ACTIVE, TOGGLE_TIME_FORMAT } from '../actions/actions';
 
 
+// combinereducers goes here
+
 const initialState = {
   activeCurrency: "USD",
   activeCryptocurrency: "BTC",
