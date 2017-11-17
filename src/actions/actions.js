@@ -2,8 +2,6 @@ import axios from 'axios';
 
 
 
-
-
 export const FETCH_PRICE = "FETCH_PRICE";
 
 export const fetchPrice = (cryptocurrency, currency, timeFormat) => {

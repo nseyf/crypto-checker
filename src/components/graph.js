@@ -23,7 +23,7 @@ const convertedTimes = graphData.map((entry) => {
 
 
     return (
-      <div>Graph!</div>
+      <div></div>
     )
   }
   }

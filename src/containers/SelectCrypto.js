@@ -33,17 +33,18 @@ componentWillUpdate(nextProps){
 
 
   render(){
+    console.log(this.props)
   const  { toggleActiveCrypto, toggleActive, toggleTimeFormat } = this.props;
 
   const buttonStyle = {
-    padding: "15px",
-    fontWeight: "100",
-    fontSize: "20px",
+    padding: "10px",
     margin: "5px",
     border: "none",
     borderRadius: "5px",
     outline: "0",
-
+  }
+  const headingStyle = {
+    fontWeight: "100"
   }
 
 if(!this.props.prices){
@@ -58,18 +59,24 @@ return (
         }}>
         <h1 className="text-center" style={{fontWeight: "100"}}>CRYPTO CHECKER</h1>
         <div className="row" style={{marginTop: "30px"}}>
+
       <div className="col-xs-12" id="crypto-buttons">
-        <button style={buttonStyle} onClick={() => toggleActiveCrypto("BTC")}>BTC</button>
-        <button style={buttonStyle} onClick={() => toggleActiveCrypto("ETH")}>ETH</button>
-        <button style={buttonStyle} onClick={() => toggleActiveCrypto("LTC")}>LTC</button>
+      <h4 style={headingStyle}>Cryptocurrency:</h4>
+        <button style={buttonStyle} onClick={() => toggleActiveCrypto("BTC")}>Bitcoin</button>
+        <button style={buttonStyle} onClick={() => toggleActiveCrypto("ETH")}>Ethereum</button>
+        <button style={buttonStyle} onClick={() => toggleActiveCrypto("LTC")}>Litecoin</button>
       </div>
       <div className="col-xs-12" id="curr-buttons">
+        <h4 style={headingStyle}>Currency:</h4>
         <button style={buttonStyle} onClick={() => toggleActive("USD")}>USD</button>
         <button style={buttonStyle} onClick={() => toggleActive("GBP")}>GBP</button>
         <button style={buttonStyle} onClick={() => toggleActive("EUR")}>EUR</button>
       </div>
+      <div className="col-xs-12">
+      <h4 style={headingStyle}>Time Format</h4>
       <button style={buttonStyle} onClick={() => toggleTimeFormat("minute")}>MINUTE</button>
       <button style={buttonStyle} onClick={() => toggleTimeFormat("hour")}>HOUR</button>
+      </div>
       </div>
       <ShowPrice convertedPrice={this.props.convertedPrice} cryptocurrency={this.props.activeCryptocurrency} currency={this.props.activeCurrency}/>
       <DisplayMarkets markets={this.props.markets.ticker} />

@@ -5,7 +5,7 @@ if(props.markets) {
 
 const { markets } = props.markets;
 
-const renderMarket = (marketData) => {
+const renderMarket = (marketData, id) => {
   const { market, price, volume } = marketData;
   const marketItemStyle = {
     borderBottom: "1px solid #f8f8f8",
@@ -14,7 +14,7 @@ const renderMarket = (marketData) => {
     fontWeight: "900"
   }
   return (
-    <div className="col-lg-2 col-md-3 col-sm-4 col-xs-6 text-center" style={marketItemStyle}>
+    <div key={id} className="col-lg-2 col-md-3 col-sm-4 col-xs-6 text-center" style={marketItemStyle}>
     <p>{market.toUpperCase()}</p>
     <p>{price}</p>
     <p>VOL: {volume}</p>
