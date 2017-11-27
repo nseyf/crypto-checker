@@ -27,8 +27,8 @@ const symbol = (currency) => {
         transition: "1s",
         marginBottom: "20px",
         fontWeight: "100"}}>
-        <span style={{fontSize: "1.5em", paddingRight: "3px", color: "black"}}>{cryptocurrency}:
-        <span style={{fontSize: "1.75em", paddingLeft: "5px"}}>{symbol(currency)}{convertedPrice[currency]}</span>
+        <span style={{fontSize: "1.2em", paddingRight: "3px", color: "black"}}>{cryptocurrency}:
+        <span style={{fontSize: "1.5em", paddingLeft: "5px"}}>{symbol(currency)}{convertedPrice[currency]}</span>
         </span>
         </h3>
     </div>
