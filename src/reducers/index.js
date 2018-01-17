@@ -1,4 +1,10 @@
-import { FETCH_PRICE, FETCH_MARKETS, CONVERT_PRICE, TOGGLE_ACTIVE, TOGGLE_ACTIVE_CRYPTO, TOGGLE_TIME_FORMAT } from '../actions/actions';
+import {
+  FETCH_PRICE,
+  FETCH_MARKETS,
+  CONVERT_PRICE,
+  TOGGLE_ACTIVE,
+  TOGGLE_ACTIVE_CRYPTO,
+  TOGGLE_TIME_FORMAT } from '../actions/actions';
 
 const initialState = {
   activeCurrency: "USD",
