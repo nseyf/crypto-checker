@@ -11,10 +11,20 @@ import { fetchPrice, fetchMarkets, convertPrice, toggleActiveCrypto, toggleActiv
 class SelectCrypto extends Component {
 
 componentDidMount(){
-  const { activeCurrency, activeCryptocurrency, timeFormat } = this.props
-  this.props.fetchPrice(activeCryptocurrency, activeCurrency, timeFormat)
-  this.props.convertPrice(activeCryptocurrency, activeCurrency)
-  this.props.fetchMarkets(activeCryptocurrency, activeCurrency)
+  const {
+    activeCurrency,
+    activeCryptocurrency,
+    timeFormat } = this.props
+  this.props.fetchPrice(
+    activeCryptocurrency,
+    activeCurrency,
+    timeFormat)
+  this.props.convertPrice(
+    activeCryptocurrency,
+    activeCurrency)
+  this.props.fetchMarkets(
+    activeCryptocurrency,
+    activeCurrency)
 }
 
 componentWillUpdate(nextProps){
@@ -23,9 +33,16 @@ componentWillUpdate(nextProps){
     this.props.activeCurrency !== nextProps.activeCurrency ||
     this.props.timeFormat !== nextProps.timeFormat
   ) {
-  this.props.fetchPrice(nextProps.activeCryptocurrency, nextProps.activeCurrency, nextProps.timeFormat)
-  this.props.convertPrice(nextProps.activeCryptocurrency, nextProps.activeCurrency)
-  this.props.fetchMarkets(nextProps.activeCryptocurrency, nextProps.activeCurrency)
+  this.props.fetchPrice(
+    nextProps.activeCryptocurrency,
+    nextProps.activeCurrency,
+    nextProps.timeFormat)
+  this.props.convertPrice(
+    nextProps.activeCryptocurrency,
+    nextProps.activeCurrency)
+  this.props.fetchMarkets(
+    nextProps.activeCryptocurrency,
+    nextProps.activeCurrency)
 
 }
 
@@ -34,7 +51,10 @@ componentWillUpdate(nextProps){
 
   render(){
     console.log(this.props)
-  const  { toggleActiveCrypto, toggleActive, toggleTimeFormat } = this.props;
+  const  {
+    toggleActiveCrypto,
+    toggleActive,
+    toggleTimeFormat } = this.props;
 
   const buttonStyle = {
     padding: "10px",
@@ -66,19 +86,24 @@ return (
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("ETH")}>Ethereum</button>
         <button style={buttonStyle} onClick={() => toggleActiveCrypto("LTC")}>Litecoin</button>
       </div>
+
       <div className="col-xs-12" id="curr-buttons">
         <h4 style={headingStyle}>Currency:</h4>
         <button style={buttonStyle} onClick={() => toggleActive("USD")}>USD</button>
         <button style={buttonStyle} onClick={() => toggleActive("GBP")}>GBP</button>
         <button style={buttonStyle} onClick={() => toggleActive("EUR")}>EUR</button>
       </div>
+
       <div className="col-xs-12">
       <h4 style={headingStyle}>Time Format</h4>
       <button style={buttonStyle} onClick={() => toggleTimeFormat("minute")}>MINUTE</button>
       <button style={buttonStyle} onClick={() => toggleTimeFormat("hour")}>HOUR</button>
       </div>
       </div>
-      <ShowPrice convertedPrice={this.props.convertedPrice} cryptocurrency={this.props.activeCryptocurrency} currency={this.props.activeCurrency}/>
+      <ShowPrice
+      convertedPrice={this.props.convertedPrice}
+      cryptocurrency={this.props.activeCryptocurrency}
+      currency={this.props.activeCurrency} />
       <DisplayMarkets markets={this.props.markets.ticker} />
         <Graph prices={this.props.prices}/>
       </div>
@@ -99,7 +124,14 @@ const mapStateToProps = (state) => {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchPrice, fetchMarkets, convertPrice, toggleActiveCrypto, toggleActive, toggleTimeFormat }, dispatch)
+  return bindActionCreators({
+    fetchPrice,
+    fetchMarkets,
+    convertPrice,
+    toggleActiveCrypto,
+    toggleActive,
+    toggleTimeFormat },
+    dispatch)
 }
 
 export default connect(
