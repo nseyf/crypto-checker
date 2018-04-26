@@ -11,7 +11,8 @@ const Loader = () => {
     top:"50%",
     width: "100%"
       }}>
-      <i style={{color: "white"}} className="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
+      <i style={{color: "white"}}
+      className="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
       <span className="sr-only">Loading...</span>
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ShowPrice = (data) => {
+
 const { currency, cryptocurrency, convertedPrice } = data;
 
 
