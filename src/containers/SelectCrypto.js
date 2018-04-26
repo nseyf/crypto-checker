@@ -18,19 +18,20 @@ class SelectCrypto extends Component {
 
 componentDidMount(){
   const {
-    activeCurrency,
-    activeCryptocurrency,
-    timeFormat } = this.props
+      activeCurrency,
+      activeCryptocurrency,
+      timeFormat 
+      } = this.props
   this.props.fetchPrice(
-    activeCryptocurrency,
-    activeCurrency,
-    timeFormat)
+      activeCryptocurrency,
+      activeCurrency,
+      timeFormat)
   this.props.convertPrice(
-    activeCryptocurrency,
-    activeCurrency)
+      activeCryptocurrency,
+      activeCurrency)
   this.props.fetchMarkets(
-    activeCryptocurrency,
-    activeCurrency)
+      activeCryptocurrency,
+      activeCurrency)
 }
 
 componentWillUpdate(nextProps){
@@ -40,15 +41,15 @@ componentWillUpdate(nextProps){
     this.props.timeFormat !== nextProps.timeFormat
   ) {
   this.props.fetchPrice(
-    nextProps.activeCryptocurrency,
-    nextProps.activeCurrency,
-    nextProps.timeFormat)
+      nextProps.activeCryptocurrency,
+      nextProps.activeCurrency,
+      nextProps.timeFormat)
   this.props.convertPrice(
-    nextProps.activeCryptocurrency,
-    nextProps.activeCurrency)
+      nextProps.activeCryptocurrency,
+      nextProps.activeCurrency)
   this.props.fetchMarkets(
-    nextProps.activeCryptocurrency,
-    nextProps.activeCurrency)
+      nextProps.activeCryptocurrency,
+      nextProps.activeCurrency)
 
 }
 
